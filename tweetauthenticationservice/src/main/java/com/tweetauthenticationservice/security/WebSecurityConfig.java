@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/auth/**").permitAll()
+				.antMatchers("/api/v1.0/tweets/**").permitAll()
 				.antMatchers("/v2/api-docs/**").permitAll().antMatchers(AUTH_WHITELIST).permitAll().anyRequest()
 				.authenticated().and().exceptionHandling().authenticationEntryPoint(restAuthPoint).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

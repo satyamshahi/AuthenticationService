@@ -37,7 +37,7 @@ import com.tweetauthenticationservice.security.service.RegistrationService;
  *
  */
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1.0/tweets")
 public class AuthController {
 
 	private transient final AuthenticationManager authManager;
@@ -55,7 +55,7 @@ public class AuthController {
 	/**
      * This Rest Point is used for UserCredential Signing and generate Jwt token.
 	 */
-	@PostMapping("/signin")
+	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody final LoginRequest loginRequest,
 			final BindingResult result) throws Exception {
 
