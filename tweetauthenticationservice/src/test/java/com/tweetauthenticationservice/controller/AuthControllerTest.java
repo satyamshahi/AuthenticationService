@@ -96,7 +96,7 @@ class AuthControllerTest {
 				.perform(post("/api/auth/signin").contentType(MediaType.APPLICATION_JSON).content(jsonString))
 				.andReturn();
 
-		assertEquals("{\"userId\":1,\"token\":null,\"username\":\"satyam1\",\"roles\":[\"ROLE_USER\"]}",
+		assertEquals("{\"token\":null,\"loginId\":\"satyam1\",\"roles\":[\"ROLE_USER\"]}",
 				result.getResponse().getContentAsString());
 	}
 	
