@@ -23,10 +23,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private RestAuthenticationEntryPoint restAuthPoint;
-	
+
 	/**
 	 * swagger UI
 	 */
@@ -37,14 +37,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 
 	private final UserDetailsService userDetails;
-	
+
 	@Autowired
 	public WebSecurityConfig(@Qualifier("userDetailsServiceImpl") final UserDetailsService userDetails) {
 		super();
 		this.userDetails = userDetails;
 	}
-
-	
 
 	/**
 	 * This configure Override method is used for loading user data from MongoDb.
@@ -54,7 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetails).passwordEncoder(bCryptPasswordEncoder());
 	}
 
-
 	/**
 	 * This configure Override method is used for configure the spring default
 	 * security.
@@ -63,10 +60,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(final HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/v1.0/tweets/**").permitAll()
-				.antMatchers("/v2/api-docs/**").permitAll().antMatchers(AUTH_WHITELIST).permitAll().anyRequest()
-				.authenticated().and().exceptionHandling().authenticationEntryPoint(restAuthPoint).and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				.antMatchers("/api/v1.0/tweets/**").permitAll().antMatchers("/v2/api-docs/**").permitAll()
+				.antMatchers(AUTH_WHITELIST).permitAll().anyRequest().authenticated().and().exceptionHandling()
+				.authenticationEntryPoint(restAuthPoint).and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.headers().frameOptions().disable();
 	}
 

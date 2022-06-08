@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private final UpdateServiceClient updateServiceClient;
-	
+
 	public static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
 	@Autowired
@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	/**
-	 *This method is used to load userCredentials from update-service database
+	 * This method is used to load userCredentials from update-service database
 	 */
 	@Override
 	public UserDetails loadUserByUsername(final String userName) throws UsernameNotFoundException {
@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					this.getClass().getSimpleName());
 		}
 		LoginResponse login = updateServiceClient.login(userName);
-		return new User(login.getLoginId(),login.getPassword(), Arrays.stream(login.getRole().split(",")).map(SimpleGrantedAuthority::new)
-				.collect(Collectors.toList()));
+		return new User(login.getLoginId(), login.getPassword(), Arrays.stream(login.getRole().split(","))
+				.map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 	}
 }

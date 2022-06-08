@@ -12,16 +12,15 @@ import com.tweetauthenticationservice.payload.ForgotPasswordRequest;
 import com.tweetauthenticationservice.payload.LoginResponse;
 import com.tweetauthenticationservice.payload.RegisterationRequest;
 
-
-@FeignClient(value="tweet-authentication-service", url = "http://localhost:6200")
+@FeignClient(value = "tweet-authentication-service", url = "http://localhost:6200")
 public interface UpdateServiceClient {
 
 	@GetMapping("{loginId}/login")
 	public LoginResponse login(@PathVariable String loginId);
-	
+
 	@PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> registerUser(@RequestBody RegisterationRequest user);
-	
+
 	@PostMapping("/{loginId}/forgot")
 	public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordRequest forgotPasswordRequest,
 			@PathVariable String loginId);

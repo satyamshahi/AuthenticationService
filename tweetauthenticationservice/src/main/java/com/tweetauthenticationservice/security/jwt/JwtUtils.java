@@ -22,18 +22,19 @@ import java.util.Date;
 public class JwtUtils {
 
 	@Autowired
-	private  JwtSignature jwtSignature;
-	
+	private JwtSignature jwtSignature;
+
 	public static final Logger LOGGER = LoggerFactory.getLogger(JwtUtils.class);
 
-	/** 
-	 * This method generated the jwt token using userName,
-	 *  secret Key and jwt Expiration time.
+	/**
+	 * This method generated the jwt token using userName, secret Key and jwt
+	 * Expiration time.
 	 */
 	public String generateJwtToken(final String userName) {
-		
+
 		if (LOGGER.isDebugEnabled()) {
-			LOGGER.debug("{}, Information: Generating JWT token for user - {} ", this.getClass().getSimpleName(), userName);
+			LOGGER.debug("{}, Information: Generating JWT token for user - {} ", this.getClass().getSimpleName(),
+					userName);
 		}
 
 		final int jwtExpiration = jwtSignature.getJwtExpirationMs();
@@ -67,22 +68,23 @@ public class JwtUtils {
 			}
 			final String jwtSecret = jwtSignature.getJwtSecret();
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
-			
+
 			validationResponse.setIsSuccess(true);
 			validationResponse.setMessage("Validated Successfully....");
 			validationResponse.setUserId(getUserNameFromJwtToken(authToken));
-			
-			return new ResponseEntity<>(validationResponse,HttpStatus.OK);
+
+			return new ResponseEntity<>(validationResponse, HttpStatus.OK);
 
 		} catch (Exception e) {
 			if (LOGGER.isDebugEnabled()) {
-				LOGGER.debug("{}, Information: Exception occurred while validating JWT token ", this.getClass().getSimpleName());
+				LOGGER.debug("{}, Information: Exception occurred while validating JWT token ",
+						this.getClass().getSimpleName());
 			}
 			validationResponse.setIsSuccess(false);
 			validationResponse.setMessage("JWT Token is Not Valid");
 			validationResponse.setUserId("");
-			return new ResponseEntity<>(validationResponse,HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(validationResponse, HttpStatus.UNAUTHORIZED);
 		}
-		
+
 	}
 }

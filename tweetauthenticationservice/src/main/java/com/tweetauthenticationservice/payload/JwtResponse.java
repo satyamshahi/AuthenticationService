@@ -2,7 +2,6 @@ package com.tweetauthenticationservice.payload;
 
 import java.util.List;
 
-
 /**
  * This class is used to store jwtResponse
  *
@@ -20,11 +19,8 @@ public class JwtResponse {
 	 * 
 	 */
 	private List<String> roles;
-	
-	
-	
-	
-	public JwtResponse( String token, String loginId, List<String> roles) {
+
+	public JwtResponse(String token, String loginId, List<String> roles) {
 		super();
 		this.token = token;
 		this.loginId = loginId;
@@ -34,10 +30,11 @@ public class JwtResponse {
 	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
+
 	public String getLoginId() {
 		return loginId;
 	}
@@ -49,9 +46,9 @@ public class JwtResponse {
 	public List<String> getRoles() {
 		return roles;
 	}
+
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
-	
-	
+
 }

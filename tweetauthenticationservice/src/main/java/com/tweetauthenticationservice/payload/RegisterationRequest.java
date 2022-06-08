@@ -3,7 +3,7 @@ package com.tweetauthenticationservice.payload;
 import javax.validation.constraints.NotNull;
 
 public class RegisterationRequest {
-	
+
 	@NotNull
 	private String loginId;
 	@NotNull
@@ -22,7 +22,6 @@ public class RegisterationRequest {
 	private String question;
 	@NotNull
 	private String ans;
-	
 
 	public String getAvtar() {
 		return avtar;

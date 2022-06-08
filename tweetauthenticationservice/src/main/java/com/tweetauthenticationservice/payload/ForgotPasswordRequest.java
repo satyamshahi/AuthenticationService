@@ -34,5 +34,5 @@ public class ForgotPasswordRequest {
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
-	
+
 }
