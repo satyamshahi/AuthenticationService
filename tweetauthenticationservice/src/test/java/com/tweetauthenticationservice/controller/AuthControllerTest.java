@@ -81,7 +81,7 @@ class AuthControllerTest {
 	
 	
 	@Test
-	public void testAuthenticateUser() throws Exception {
+	 void testAuthenticateUser() throws Exception {
 
 		final ObjectMapper mapper = new ObjectMapper();
 
@@ -96,7 +96,7 @@ class AuthControllerTest {
 				.perform(post("/api/auth/signin").contentType(MediaType.APPLICATION_JSON).content(jsonString))
 				.andReturn();
 
-		assertEquals("{\"userId\":1,\"token\":null,\"username\":\"satyam1\",\"roles\":[\"ROLE_USER\"]}",
+		assertEquals("{\"token\":null,\"loginId\":\"satyam1\",\"roles\":[\"ROLE_USER\"]}",
 				result.getResponse().getContentAsString());
 	}
 	
@@ -109,7 +109,7 @@ class AuthControllerTest {
 	 * Testing AuthenticateUser Rest Point When UserName And Password Is Blank
 	 */
 	@Test
-	public void testAuthenticateUserRestPointWhenUserNameAndPasswordIsBlank() throws Exception {
+	 void testAuthenticateUserRestPointWhenUserNameAndPasswordIsBlank() throws Exception {
 
 		final ObjectMapper mapper = new ObjectMapper();
 
@@ -132,7 +132,7 @@ class AuthControllerTest {
 	 * This test is use for Validation testing user having Valid token
 	 */
 	@Test
-	public void testValidateAndReturnUser() throws Exception {
+	 void testValidateAndReturnUser() throws Exception {
 		when(jwtUtils.getUserNameFromJwtToken(Mockito.anyString())).thenReturn("satyam");
 		ValidationResponse validationResponse = new ValidationResponse();
 		validationResponse.setMessage("Validated Successfully....");
@@ -154,7 +154,7 @@ class AuthControllerTest {
  * This test is use for Validation testing user having not Valid token
  */
 @Test
-public void testValidateAndReturnUserHavingNotValidToken() throws Exception {
+ void testValidateAndReturnUserHavingNotValidToken() throws Exception {
 
 	when(jwtUtils.getUserNameFromJwtToken(Mockito.anyString())).thenReturn("satyam");
 	ValidationResponse validationResponse = new ValidationResponse();

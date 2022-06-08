@@ -25,7 +25,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	private transient RestAuthenticationEntryPoint restAuthPoint;
+	private RestAuthenticationEntryPoint restAuthPoint;
 	
 	/**
 	 * swagger UI
@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	};
 
-	private transient final UserDetailsService userDetails;
+	private final UserDetailsService userDetails;
 	
 	@Autowired
 	public WebSecurityConfig(@Qualifier("userDetailsServiceImpl") final UserDetailsService userDetails) {

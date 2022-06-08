@@ -21,7 +21,7 @@ class JwtSignatureTest {
 	 * {@link com.tweetauthenticationservice.security.service.JwtSignature#getJwtSecret()}.
 	 */
 	@Test
-	public void testGetJwtSecret() {
+	 void testGetJwtSecret() {
 		final JwtSignature jwtSignature = new JwtSignature();
 		 jwtSignature.setJwtSecret("secret");
 		assertEquals("secret", jwtSignature.getJwtSecret());
@@ -32,7 +32,7 @@ class JwtSignatureTest {
 	 * {@link com.tweetauthenticationservice.security.service.JwtSignature#getJwtExpirationMs()}.
 	 */
 	@Test
-	public void testGetJwtExpirationMs() {
+	 void testGetJwtExpirationMs() {
 		final JwtSignature jwtSignature = new JwtSignature();
 		jwtSignature.setJwtExpirationMs(500);
 		assertEquals(500, jwtSignature.getJwtExpirationMs());
