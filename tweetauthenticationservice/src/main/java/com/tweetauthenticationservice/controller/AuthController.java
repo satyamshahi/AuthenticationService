@@ -129,9 +129,9 @@ public class AuthController {
 	/**
 	 * This Rest Point is used for forgot Password.
 	 */
-	@GetMapping("/{loginId}/forgot")
+	@GetMapping("/{username}/forgot")
 	public ResponseEntity<String> forgotPassword(@Valid @RequestBody ForgotPasswordRequest forgotPasswordRequest,
-			@PathVariable String loginId, final BindingResult result) {
+			@PathVariable String username, final BindingResult result) {
 		if (result.hasErrors()) {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug(
@@ -140,7 +140,7 @@ public class AuthController {
 			}
 			return new ResponseEntity<>("One or more field Blank", HttpStatus.BAD_REQUEST);
 		}
-		return registrationService.forgotPassword(forgotPasswordRequest, loginId);
+		return registrationService.forgotPassword(forgotPasswordRequest, username);
 	}
 
 }

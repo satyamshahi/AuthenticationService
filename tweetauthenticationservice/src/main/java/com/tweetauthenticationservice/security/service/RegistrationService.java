@@ -48,6 +48,7 @@ public class RegistrationService {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("{}, Information: Calling update service  ", this.getClass().getSimpleName());
 			}
+			forgotPasswordRequest.setNewPassword(passwordEncoder.encode(forgotPasswordRequest.getNewPassword()));
 			return updateServiceClient.forgotPassword(forgotPasswordRequest, loginId);
 		} catch (FeignException e) {
 			if (LOGGER.isDebugEnabled()) {

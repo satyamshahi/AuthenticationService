@@ -22,7 +22,7 @@ public interface UpdateServiceClient {
 	@PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> registerUser(@RequestBody RegisterationRequest user);
 	
-	@GetMapping("/{loginId}/forgot")
+	@PostMapping("/{loginId}/forgot")
 	public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordRequest forgotPasswordRequest,
 			@PathVariable String loginId);
 
