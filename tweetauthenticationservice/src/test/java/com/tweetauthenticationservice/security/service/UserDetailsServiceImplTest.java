@@ -45,7 +45,7 @@ class UserDetailsServiceImplTest {
 	 * .UserDetailsServiceImpl#loadUserByUsername(java.lang.String)}.
 	 */
 	@Test
-	public void testLoadUserByUsernameWhenuserPresentInRepository() {
+	 void testLoadUserByUsernameWhenuserPresentInRepository() {
 		final UserDetailsServiceImpl udsi = new UserDetailsServiceImpl(updateServiceClient);
 		LoginResponse loginResponse =new LoginResponse();
 		loginResponse.setLoginId("user1");
@@ -63,7 +63,7 @@ class UserDetailsServiceImplTest {
 	 * .UserDetailsServiceImpl#loadUserByUsername(java.lang.String)}.
 	 */
 	@Test
-	public void testLoadUserByUsernameWhenuserIsPresentInRepository() throws Exception {
+	 void testLoadUserByUsernameWhenuserIsPresentInRepository() throws Exception {
 		final UserDetailsServiceImpl udsi = new UserDetailsServiceImpl(updateServiceClient);
 		LoginResponse loginResponse =new LoginResponse();
 		loginResponse.setLoginId("user1");

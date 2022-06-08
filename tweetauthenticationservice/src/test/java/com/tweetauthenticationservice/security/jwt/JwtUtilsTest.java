@@ -99,7 +99,7 @@ class JwtUtilsTest {
 
 		final String result = jwtUtils.generateJwtToken("satyam1");
 
-		assertTrue(jwtUtils.validateJwtToken(result).getBody().getMessage().equals("Validated Successfully...."));
+		assertEquals(true, jwtUtils.validateJwtToken(result).getBody().getMessage().equals("Validated Successfully...."));
 
 	}
 
